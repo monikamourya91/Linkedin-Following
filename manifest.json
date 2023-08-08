@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Linkedin Following",
+  "short_name": "Linkedin Following",
+  "version": "1.0.0",
+  "description": "LinkedIn automation tool - Automate collect LinkedIn Following leads",
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "icons": {
+    "32": "icons/icon32.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "browser_style": false,
+    "default_title": "initial",
+    "default_popup": "/index.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.linkedin.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": [
+        "/content/js/content.js"
+      ],
+      "css": ["/content/css/content.css"],
+      "all_frames": false
+    }
+  ]
+}
